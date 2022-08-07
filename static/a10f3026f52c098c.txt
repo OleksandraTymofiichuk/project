@@ -1,0 +1,46 @@
+00:13:50	vitalii:	chain
+00:42:17	iPhone (Tetiana):	почему throw Error а не throw new Error
+00:43:43	Vyacheslav Koldovskyy:	так, бажано new Error
+00:44:14	Roman:	не працювало з new Error
+00:45:08	Roman:	і помилка була щось такого типу що new лишнє 
+00:45:14	Vyacheslav Koldovskyy:	то значить дефект, маємо поправити
+00:45:33	Andrew Melnychuk:	в мене пройшло з new
+00:45:42	Anton Kozachuk:	У мене з new працювало.
+00:45:48	nazden:	```function checkAdultAlternative(age) {
+    const messagesAndRules = {
+        "Please, enter your age": !age,
+        "Please, enter positive number": age < 0,
+        "Please, enter number": typeof age !== "number",
+        "Please, enter Integer number": !Number.isInteger(age),
+        "Access denied - you are too young!": age < 18,
+    };
+    const success = "Access allowed";
+    const complete = "Age verification complete";
+    function throwErr(err) {
+        throw new Error(err);
+    }
+    try {
+        Object.entries(messagesAndRules).forEach(
+            ([key, value]) => value && throwErr(key)
+        );
+        console.log(success);
+    } catch (e) {
+        console.log(e.name, e.message);
+    } finally {
+        console.log(complete);
+    }
+}```
+00:45:59	nazden:	а має право на життя таке рішення?
+00:48:18	Sofia Koshulap:	невеличке організаційне питання.чи вже всім прийняли запит на колоборацію та чи всі ментори почали перевірку? а то мене напевно обділили увагую
+00:48:37	Vyacheslav Koldovskyy:	виглядає дуже непогано,  але трохи оверкомплікейтед, то хіба якщо  правила треба гнучко додавати - то ок, якщо просто для "одноразового коду", то вже не факт. 
+00:49:33	nazden:	зрозумів, дякую)
+00:49:50	Vyacheslav Koldovskyy:	так, ментори  проглянуть ваш код, його не лише на  гітхабі  видно, а на SoftServe.academy теж
+00:50:55	Vyacheslav Koldovskyy:	якщо що - з вами зв'яжуться, якщо не зв'язуються, то все добре, можна спати спокійно :)
+00:52:51	Sofia Koshulap:	дякую))
+00:56:25	Vyacheslav Koldovskyy:	"Sofia Ssks" - Софіє, то ти?
+00:56:31	Ilya Protsenko:	Чому варіант "returns the value" вважається неправильним? Вона повертає undefined
+00:56:32	Vyacheslav Koldovskyy:	Треба задати прізвище правильне
+01:03:06	Illia M:	вибачте:)
+01:03:11	Illia M:	думав відключив звук
+01:03:37	Illia M:	нема коли пообідати тому доводиться все співміщати:)
+01:03:47	Vyacheslav Koldovskyy:	:)

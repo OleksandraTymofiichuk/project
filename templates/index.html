@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+            {% for element in news %}
+                <div class="card my_bg  my_border mb-3" style="max-width: 2140px;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{ element.image_path }}" style="width:312px;height:230px;" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <a href = "/show_news?id={{ element.id }}"><h5 class="card-title">{{ element.header }}</h5></a>
+                          <p class="card-text my_text">{{ element.text[:169] }}...</p>
+                          <p class="card-text"><small class="text-muted">{{ element.datetime }}</small></p>
+                          <p class="card-text"><small class="text-muted">{{ element.username }}</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
+
+{% endblock %}

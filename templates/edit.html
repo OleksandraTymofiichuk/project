@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block main %}
+    <form action="/save" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <span class="input-group-text my_bg my_border my_text" id="inputGroup-sizing-default">Header</span>
+            <input type="text" class="form-control my_bg my_border my_text" aria-label="Header" name="header" aria-describedby="inputGroup-sizing-default" value="{{ news1.header }}">
+            <input type="hidden" name="id" value="{{ news1.id }}">
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text my_bg my_border my_text">Text</span>
+            <textarea class="form-control my_bg my_border my_text" name="text" aria-label="With textarea" rows="12">{{ news1.text }}</textarea>
+        </div>
+        <p></p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <img src="{{image_path}}" style="width:176px;height:130px;"class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col">
+                <input type="file" class="btn btn-outline-secondary" name="image" accept=".jpg,.jpeg,.png">
+              </div>
+              <div class="col">
+                <button class="btn btn-outline-success" type="submit">Save</button>
+              </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}
+

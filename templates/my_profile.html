@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My profile
+{% endblock %}
+
+{% block main %}
+
+<form action="/send" method = "post" class="row g-3">
+    <div class="col-md-6">
+        <label for="inputEmail4" class="form-label my_text">Name</label>
+        <input type="text" class="form-control my_bg my_border my_text" id="inputEmail4" name="name" value = "{{profile1.username}}">
+      </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label my_text">Email</label>
+      <input type="email" class="form-control my_bg my_border my_text" id="inputEmail4" name="email" placeholder="email@gmail.com" value = "{{email}}">
+    </div>
+    <div class="col-12">
+      <label for="inputAddress" class="form-label my_text">Address</label>
+      <input type="text" class="form-control my_bg my_border my_text" id="inputAddress" name="address" value="{{address}}">
+    </div>
+    <div class="col-md-6">
+      <label for="inputCity" class="form-label my_text">Phone</label>
+      <input type="tel" class="form-control my_bg my_border my_text" id="inputCity" placeholder=097-649-61-27 name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" value="{{phone}}">
+    </div>
+    <div class="col-md-4">
+      <label for="inputState" class="form-label my_text">Date of birth</label>
+      <input type="date" class="form-control my_bg my_border my_text" id="inputCity" name="date_of_birth" value="{{profile1.date_of_birth}}">
+
+    <p></p>
+    <div class="mb-3">
+        <input type="hidden" name="id" value="{{ session.user_id }}">
+      </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+
+
+{% endblock %}
+

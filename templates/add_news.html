@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add news
+{% endblock %}
+
+{% block main %}
+    <form action="/add_news" method="post" enctype="multipart/form-data">
+        <div class="input-group mb-3">
+            <span class="input-group-text my_bg my_border my_text" id="inputGroup-sizing-default">Header</span>
+            <input type="text" class="form-control my_bg my_border my_text" aria-label="Header" name="header" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group">
+            <span class="input-group-text my_bg my_border my_text">Text</span>
+            <textarea class="form-control my_bg my_border my_text" name="text" aria-label="With textarea" rows="13"></textarea>
+        </div>
+        <p></p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <input type="file" class="btn btn-outline-secondary" name="image" accept=".jpg,.jpeg,.png">
+              </div>
+              <div class="col">
+                <button class="btn btn-outline-success" type="submit">Add news</button>
+              </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

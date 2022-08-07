@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+     Show news
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="card mb-3 my_bg my_border my_text" style="max-width: 2140px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            <img src="{{image_path}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ news1.header }}</h5>
+                <p class="card-text">{{ news1.text }}</p>
+                <p class="card-text"><small class="text-muted">{{ news1.datetime }}</small></p>
+                <p class="card-text"><small class="text-muted">{{ news1.username }}</small></p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+          <div class="col">
+
+          </div>
+          <div class="col">
+            {% if session.user_id == news1.users_id %}
+              <form action="/edit" method="post">
+                  <div class="mb-3">
+                    <input type="hidden" name="id" value="{{ news1.id }}">
+                  </div>
+                  <button type="submit" class="btn btn-outline-secondary">Edit</button>
+              </form>
+            </div>
+            <div class="col">
+              <form action="/remove" method="post">
+                  <div class="mb-3">
+                    <input type="hidden" name="id" value="{{ news1.id }}">
+                  </div>
+                 
+
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Remove
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content my_bg my_border my_text">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Alert!</h5>
+                          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body my_bg my_border my_text">
+                          Are you sure you want to remove the news?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-outline-danger">Remove</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </form>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+
+{% endblock %}
